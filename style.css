@@ -6,9 +6,8 @@ body {
   font-family: "ArialRounded", -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
     "Segoe UI Symbol";
-  font-size: 30px;
+  font-size: 25px;
   display: grid;
-  grid-gap: 1rem;
   grid-template-rows: auto 1fr auto auto;
   place-items: center;
   background-color: #f05b56;
@@ -110,18 +109,18 @@ header {
   font-size: 25px;
   opacity: 1;
   text-transform: lowercase;
-  padding: 20px;
+  padding: 10px;
 }
 
 .task-template {
   width: 100%;
   display: flex;
   align-items: center;
-  height: 70px;
+  height: 60px;
   font-weight: bold;
-  font-size: 25px;
+  font-size: 20px;
   border-bottom: 2px solid #dfd2d1;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 .task-template div {
   flex: 1;
@@ -130,4 +129,83 @@ header {
 .task-template button {
   padding: 10px 20px 10px 20px;
   color: #000;
+}
+
+.task-list {
+  display: flex;
+  background-color: #fff;
+  width: 100%;
+  padding: 10px;
+}
+
+.task-list button {
+  padding: 10px 20px 10px 20px;
+  color: #000;
+  background-color: #dfd2d1;
+}
+
+.task-list .task {
+  flex: 2;
+  text-align: left;
+  padding-left: 10px;
+  font-size: 25px;
+}
+
+.task-list .est-task {
+  flex: 2;
+  text-align: right;
+  padding-right: 10px;
+  font-size: 25px;
+}
+
+/*============= Add new Task ===============*/
+
+.add-task {
+  width: 100%;
+  height: 60px;
+  background-color: #0000001a;
+  border-radius: 8px;
+  display: flex;
+  place-items: center;
+  cursor: pointer;
+  opacity: 0.8;
+  margin-top: 12px;
+  border: 2px dashed #ffffff66;
+}
+
+.add-task a {
+  text-decoration: none;
+  color: #000;
+  width: 100%;
+  padding-right: 20px;
+}
+
+.add-task:hover {
+  opacity: 1;
+}
+
+/*======== Footer --- Task desc ===========*/
+.task-desc {
+  width: 35%;
+  display: flex;
+  margin-top: 28px;
+  padding: 20px 12px;
+  border-top: 1px solid #ffffffcc;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  background-color: #ffffff1a;
+}
+
+.task-desc div {
+  margin: 0px 8px;
+  display: inline-block;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.task-desc span {
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  font-size: 24px;
+  margin-left: 4px;
 }
