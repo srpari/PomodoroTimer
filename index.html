@@ -5,13 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pomodoro Timer</title>
     <link rel="stylesheet" href="/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
   </head>
   <body>
     <header>
       <span>Pomodoro Timer</span>
-      <button>Reports</button>
-      <button>Settings</button>
-      <button>Login</button>
+      <button class="btn reports">
+        <i class="fa fa-bar-chart"></i>&nbsp;Reports
+      </button>
+      <button class="btn settings">
+        <i class="fa fa-cog"></i>&nbsp;Settings
+      </button>
+      <button class="btn login">
+        <i class="fa fa-user-circle-o"></i>&nbsp;Login
+      </button>
     </header>
     <main class="timer-card">
       <div class="timer-types">
@@ -20,9 +30,35 @@
         <a href="#">Long Break</a>
       </div>
       <div class="timer">25:00</div>
-      <div class="start"><button>START</button></div>
+      <div><button class="btn start">START</button></div>
     </main>
-    <div>task</div>
-    <footer></footer>
+    <div class="task-section">
+      <div class="current-task">
+        <div>working on</div>
+        <div class="task">task1</div>
+      </div>
+      <div class="task-template">
+        <div>Tasks</div>
+        <button class="btn">
+          <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="task-list">
+        <span>*</span>
+        <span>task1</span>
+        <span>0/3</span>
+        <span>:</span>
+      </div>
+      <div class="add-task">
+        <span>+ Add Task</span>
+      </div>
+    </div>
+    <footer>
+      <div class="task-desc">
+        <span>Est:<span>4</span></span>
+        <span>Act:<span>4</span></span>
+        <span>Finish at <span>8:35</span></span>
+      </div>
+    </footer>
   </body>
 </html>
