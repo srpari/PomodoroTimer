@@ -9,30 +9,31 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
+    <script src="/main.js"></script>
   </head>
   <body>
     <header>
       <span>Pomodoro Timer</span>
-      <button class="btn reports">
-        <i class="fa fa-bar-chart"></i>&nbsp;Reports
-      </button>
+      <!-- <button class="btn reports">
+        <i class="fa fa-bar-chart"></i>&nbsp;<span>Reports</span>
+      </button> -->
       <button class="btn settings">
-        <i class="fa fa-cog"></i>&nbsp;Settings
+        <i class="fa fa-cog"></i>&nbsp;<span>Settings</span>
       </button>
-      <button class="btn login">
-        <i class="fa fa-user-circle-o"></i>&nbsp;Login
-      </button>
+      <!-- <button class="btn login">
+        <i class="fa fa-user-circle-o"></i>&nbsp;<span>Login</span>
+      </button> -->
     </header>
     <div class="progress">
       <div></div>
     </div>
     <main class="timer-card">
       <div class="timer-types">
-        <a href="#">Pomodoro</a>
-        <a href="#">Short Break</a>
-        <a href="#">Long Break</a>
+        <span onclick="work()">Pomodoro</span>
+        <span onclick="short()">Short Break</span>
+        <span onclick="long()">Long Break</span>
       </div>
-      <div class="timer">25:00</div>
+      <div id="timer" onclick="start_timer()">25:00</div>
       <div><button class="btn start">START</button></div>
     </main>
     <div class="task-section">
@@ -48,7 +49,7 @@
       </div>
       <div class="task-list">
         <button class="btn">
-          <i class="fa fa-check-circle" style="font-size: 26px"></i>
+          <i class="fa fa-check-circle" style="font-size: 28px"></i>
         </button>
         <div class="task">task1</div>
         <div class="est-task">3/4</div>
