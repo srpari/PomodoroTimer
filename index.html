@@ -18,7 +18,9 @@
         <i class="fa fa-bar-chart"></i>&nbsp;<span>Reports</span>
       </button> -->
       <button class="btn settings">
-        <i class="fa fa-cog"></i>&nbsp;<span>Settings</span>
+        <i class="fa fa-cog"></i>&nbsp;<span onclick="openSettings()"
+          >Settings</span
+        >
       </button>
       <!-- <button class="btn login">
         <i class="fa fa-user-circle-o"></i>&nbsp;<span>Login</span>
@@ -29,9 +31,9 @@
     </div>
     <main class="timer-card">
       <div class="timer-types">
-        <span onclick="work()">Pomodoro</span>
-        <span onclick="short()">Short Break</span>
-        <span onclick="long()">Long Break</span>
+        <button class="btn" onclick="work()">Pomodoro</button>
+        <button class="btn" onclick="short()">Short Break</button>
+        <button class="btn" onclick="long()">Long Break</button>
       </div>
       <div id="timer" onclick="start_timer()">25:00</div>
       <div><button class="btn start">START</button></div>
@@ -48,23 +50,41 @@
         </button>
       </div>
       <div class="task-list">
-        <button class="btn">
-          <i class="fa fa-check-circle" style="font-size: 28px"></i>
+        <button class="btn" id="cb" onclick="taskCompleted()">
+          <i
+            class="fa fa-check-circle"
+            style="font-size: 28px; color: green"
+          ></i>
         </button>
-        <div class="task">task1</div>
-        <div class="est-task">3/4</div>
+        <div id="act-task">task1</div>
+        <!-- <div id="est-task">3/4</div> -->
         <button class="btn">
-          <i class="fa fa-ellipsis-v" style="font-size: 26px"></i>
+          <i class="fa fa-ellipsis-v" style="font-size: 26px; color: black"></i>
         </button>
       </div>
       <div class="add-task">
-        <a href="#"> <i class="fa fa-plus-circle"></i>&nbsp; Add Task </a>
+        <span onclick="openNewtask()">
+          <i class="fa fa-plus-circle"></i>&nbsp; Add Task
+        </span>
       </div>
     </div>
-    <footer class="task-desc">
+
+    <div class="new-task" id="newtask">
+      <input
+        type="text"
+        id="at"
+        class="addNewTask"
+        placeholder="What needs to be done ?"
+      />
+      <button type="submit" class="btn">Save</button>
+      <button type="button" class="btn cancel" onclick="closeNewtask()">
+        Cancel
+      </button>
+    </div>
+    <!-- <footer class="task-desc">
       <div>Est:<span>4</span></div>
       <div>Act:<span>4</span></div>
       <div>Finish at <span>8:35</span></div>
-    </footer>
+    </footer> -->
   </body>
 </html>
