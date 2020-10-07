@@ -68,7 +68,7 @@
         </span>
       </div>
     </div>
-
+    <!-- New Task window  -->
     <div class="new-task" id="newtask">
       <input
         type="text"
@@ -80,6 +80,25 @@
       <button type="button" class="btn cancel" onclick="closeNewtask()">
         Cancel
       </button>
+    </div>
+    <!-- New Timer window -->
+    <div class="set-timer" id="settime">
+      <div class="labels">
+        <label>Pomodoro</label>
+        <label>Short Break</label>
+        <label>Long Break</label>
+      </div>
+      <div class="time-inputs">
+        <input type="text" id="pt" class="set-time" value="25" />
+        <input type="text" id="st" class="set-time" value="5" />
+        <input type="text" id="lt" class="set-time" value="15" />
+      </div>
+      <div class="time-ctrls">
+        <button type="submit" class="btn" onclick="saveSettings()">Save</button>
+        <button type="button" class="btn cancel" onclick="closeSettings()">
+          Cancel
+        </button>
+      </div>
     </div>
     <!-- <footer class="task-desc">
       <div>Est:<span>4</span></div>

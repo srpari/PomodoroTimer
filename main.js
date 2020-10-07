@@ -4,15 +4,15 @@ var long_minutes = 15;
 
 var seconds = "00";
 
-function work() {
+function work(work_minutes) {
   document.body.style.background = "#f05b56";
   document.getElementById("timer").innerHTML = work_minutes + ":" + seconds;
 }
-function short() {
+function short(short_minutes) {
   document.body.style.background = "#4ca6a9";
   document.getElementById("timer").innerHTML = short_minutes + ":" + seconds;
 }
-function long() {
+function long(long_minutes) {
   document.body.style.background = "#498fc1";
   document.getElementById("timer").innerHTML = long_minutes + ":" + seconds;
 }
@@ -51,4 +51,14 @@ function closeNewtask() {
   document.getElementById("newtask").style.display = "none";
 }
 
-function openSettings() {}
+function openSettings() {
+  document.getElementById("settime").style.display = "block";
+}
+function closeSettings() {
+  document.getElementById("settime").style.display = "none";
+}
+function saveSettings() {
+  work_minutes = document.getElementById("pt").value;
+  short_minutes = document.getElementById("st").value;
+  long_minutes = document.getElementById("lt").value;
+}
