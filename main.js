@@ -1,45 +1,52 @@
-var seconds = "00";
+let seconds = "00"; 
+let timer_seconds=10;
+let timer_minutes;
+let seconds_interval;
+ let minutes_interval
+
 
 function timer() {
 
   let Label=document.getElementById("timerBtn").value;
-  
+ 
   
   if (Label=="START") {
-    document.getElementById("timerBtn").innerHTML="STOP";
-    document.getElementById("timerBtn").value="STOP";
-    let timer_minutes = document.getElementById("timer-minutes").innerHTML;
- let timer_seconds = 59;
-  // start the countdown
-   // let minutes_interval = setInterval(minutesTimer, 1000);
-    let seconds_interval = setInterval(secondsTimer, 1000);
-
-      function minutesTimer() {
+        document.getElementById("timerBtn").innerHTML="STOP";
+        document.getElementById("timerBtn").value="STOP";
+       // timer_minutes = document.getElementById("timer-minutes").innerHTML-1;
+       timer_minutes = document.getElementById("timer-minutes").innerHTML;
         
-      /*if (timer_minutes>0){
-        timer_minutes = timer_minutes-minutes_interval;
-        document.getElementById("timer-minutes").innerHTML=timer_minutes;
-      }
-      } */
-    }
+        seconds_interval = setInterval(secondsTimer, 1000);
+      
+        //  minutes_interval = setInterval(minutesTimer, 60000);
 
-function secondsTimer() {
-    
-  if (timer_seconds>=0){
-    document.getElementById("timer-seconds").innerHTML= ('0' + timer_seconds ).slice(-2);
-    timer_seconds = timer_seconds-seconds_interval;
-   }
-   else{
-    clearInterval(secondsTimer);
-    timer_seconds = 59;
-   }
-  }
-}  
-  else if (Label=="STOP") {
-    document.getElementById("timerBtn").innerHTML="START";
-    document.getElementById("timerBtn").value="START";
-    
-  }
+          function minutesTimer() {
+            
+          /*if (timer_minutes>0){
+            timer_minutes = timer_minutes-minutes_interval;
+            document.getElementById("timer-minutes").innerHTML=timer_minutes;
+          }
+          } */
+        }
+
+        function secondsTimer() {
+          document.getElementById("timer-minutes").innerHTML=timer_minutes-1;   
+          if (timer_seconds>=0){
+            document.getElementById("timer-seconds").innerHTML= ('0' + timer_seconds ).slice(-2);
+            timer_seconds = timer_seconds-seconds_interval;
+          }
+          else{
+            timer_seconds = 10;
+            timer_minutes--;
+         //   clearInterval(seconds_interval);
+          }
+        }
+      }  
+      else if (Label=="STOP") {
+            document.getElementById("timerBtn").innerHTML="START";
+            document.getElementById("timerBtn").value="START";            
+            clearInterval(seconds_interval);
+      }
   
   
 }
