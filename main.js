@@ -2,8 +2,9 @@ let seconds = "00";
 let timer_seconds=10;
 let timer_minutes;
 let seconds_interval;
- let minutes_interval
+let minutes_interval;
 
+let pomo_minutes=25;
 
 function timer() {
 
@@ -11,8 +12,8 @@ function timer() {
  
   
   if (Label=="START") {
-        document.getElementById("timerBtn").innerHTML="STOP";
-        document.getElementById("timerBtn").value="STOP";
+        document.getElementById("timerBtn").innerHTML="RESET";
+        document.getElementById("timerBtn").value="RESET";
        // timer_minutes = document.getElementById("timer-minutes").innerHTML-1;
        timer_minutes = document.getElementById("timer-minutes").innerHTML;
         
@@ -35,40 +36,48 @@ function timer() {
             document.getElementById("timer-seconds").innerHTML= ('0' + timer_seconds ).slice(-2);
             timer_seconds = timer_seconds-seconds_interval;
           }
-          else{
-            timer_seconds = 10;
+          else
+          {
+            timer_seconds = 09;
             timer_minutes--;
-         //   clearInterval(seconds_interval);
+            if(timer_minutes==0) 
+            { 
+               clearInterval(seconds_interval);
+             alert("Task Completed");
+            }
           }
-        }
+         
+        } //seconds timer ends here
       }  
-      else if (Label=="STOP") {
-            document.getElementById("timerBtn").innerHTML="START";
-            document.getElementById("timerBtn").value="START";            
-            clearInterval(seconds_interval);
-      }
-  
+      else if (Label=="RESET") {
+        document.getElementById("timerBtn").innerHTML="START";
+        document.getElementById("timerBtn").value="START";      
+        document.getElementById("timer-minutes").innerHTML = pomo_minutes;
+        document.getElementById("timer-seconds").innerHTML = seconds;    
+        clearInterval(seconds_interval); 
+            
+      } 
   
 }
 
 
 
 function work() {
-  let work_minutes = 25;
+  pomo_minutes = 5;
   document.body.style.background = "#f05b56";
-  document.getElementById("timer-minutes").innerHTML = work_minutes;
+  document.getElementById("timer-minutes").innerHTML = pomo_minutes;
   document.getElementById("timer-seconds").innerHTML = seconds;
 }
 function short() {
-  let short_minutes = 5;
+  pomo_minutes = 3;
   document.body.style.background = "#4ca6a9";
-  document.getElementById("timer-minutes").innerHTML = short_minutes;
+  document.getElementById("timer-minutes").innerHTML = pomo_minutes;
   document.getElementById("timer-seconds").innerHTML = seconds;
 }
 function long() {
-  let long_minutes = 15;
+  pomo_minutes = 4;
   document.body.style.background = "#498fc1";
-  document.getElementById("timer-minutes").innerHTML = long_minutes;
+  document.getElementById("timer-minutes").innerHTML = pomo_minutes;
   document.getElementById("timer-seconds").innerHTML = seconds;
 }
 
