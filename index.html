@@ -54,17 +54,16 @@
         </button>
       </div>
       <div class="task-list">
-        <button class="btn" id="cb" onclick="taskCompleted()">
+        <!-- <button class="btn" id="cb" onclick="taskCompleted()">
           <i
             class="fa fa-check-circle"
             style="font-size: 28px; color: green"
           ></i>
         </button>
         <div id="act-task">task1</div>
-        <!-- <div id="est-task">3/4</div> -->
         <button class="btn">
           <i class="fa fa-ellipsis-v" style="font-size: 26px; color: black"></i>
-        </button>
+        </button> -->
       </div>
       <div class="add-task">
         <span onclick="openNewtask()">
@@ -80,7 +79,7 @@
         class="addNewTask"
         placeholder="What needs to be done ?"
       />
-      <button type="submit" class="btn">Save</button>
+      <button type="submit" class="btn" onclick="saveNewtask()">Save</button>
       <button type="button" class="btn cancel" onclick="closeNewtask()">
         Cancel
       </button>

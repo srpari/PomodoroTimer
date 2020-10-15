@@ -147,7 +147,7 @@ header {
 }
 
 .task-list {
-  display: flex;
+  /* display: flex; */
   background-color: #fff;
   width: 100%;
   padding: 10px;
@@ -170,6 +170,10 @@ header {
   padding-left: 10px;
   font-size: 25px;
   text-decoration: none;
+}
+
+.listItems {
+  display: flex;
 }
 /* 
 .task-list #est-task {

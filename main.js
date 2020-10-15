@@ -13,8 +13,10 @@ let work_minutes=25,short_minutes=5,long_minutes=15;
 // Audio 
 let bell = new Audio("tea-bell.mp3");
 
+//todoList
+let todoArr = [];
 
-function timer() {
+function timer() { 
   let Label=document.getElementById("timerBtn").value; 
   
   if (Label=="START") {
@@ -96,13 +98,37 @@ function saveSettings() {
 }
 
 
+// addNewTask to the List 
+function saveNewtask() {
+  if(document.getElementById("at").value !="") {
+    todoArr.push(document.getElementById("at").value);
+    console.log('todoArr :>> ', todoArr);
+    document.querySelector(".task-list").innerHTML = "";
+    for (let i = 0; i < todoArr.length; i++) {
+      document.querySelector(".task-list").innerHTML +=
+     "<div class='listItems' id="+i+"> <button class='btn' onclick='taskCompleted("+i+")'>"+
+        "  <i class='fa fa-check-circle' style='font-size: 28px; color: green' "+ 
+         " ></i> </button>" + 
+       "  <div id='act-task'>"+todoArr[i]+"</div> "+
+       "<button class='btn'>"+
+       "<i class='fa fa-ellipsis-v' style='font-size: 26px; color: black'></i>"+ 
+     "</button></div>";
+    }
+
+  }
+  else {
+    alert ("Pleses add new task !");
+  }
+  closeNewtask();
+}
+
+
+
 function taskCompleted() {
   if ((document.getElementById("act-task").style.textDecoration = "none")) {
     document.getElementById("act-task").style.textDecoration = "line-through";
-  } else if (
-    (document.getElementById("act-task").style.textDecoration = "line-through")
-  ) {
-    alert("none");
+  } 
+  else {
     document.getElementById("act-task").style.textDecoration = "none";
   }
 }
