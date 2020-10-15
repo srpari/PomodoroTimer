@@ -102,33 +102,40 @@ function saveSettings() {
 function saveNewtask() {
   if(document.getElementById("at").value !="") {
     todoArr.push(document.getElementById("at").value);
-    console.log('todoArr :>> ', todoArr);
+    //console.log('todoArr :>> ', todoArr);
+    
+ // document.getElementById("task-list").style.display=block;
     document.querySelector(".task-list").innerHTML = "";
     for (let i = 0; i < todoArr.length; i++) {
       document.querySelector(".task-list").innerHTML +=
-     "<div class='listItems' id="+i+"> <button class='btn' onclick='taskCompleted("+i+")'>"+
+     "<div class='listItems' id="+i+"'> <button class='btn' onclick='taskCompleted("+i+")'>"+
         "  <i class='fa fa-check-circle' style='font-size: 28px; color: green' "+ 
          " ></i> </button>" + 
-       "  <div id='act-task'>"+todoArr[i]+"</div> "+
-       "<button class='btn'>"+
+       "  <div id='act-task' onclick='updateTask("+i+")' >"+todoArr[i]+"</div> "+
+       "<button class='btn' onclick=alert('123')>"+
        "<i class='fa fa-ellipsis-v' style='font-size: 26px; color: black'></i>"+ 
      "</button></div>";
     }
-
   }
   else {
     alert ("Pleses add new task !");
   }
-  closeNewtask();
+  closeNewtask();  
 }
 
+function updateTask(id) {
+  alert(todoArr[id]);
+  document.querySelector(".current-task").innerHTML =
+  "<div>working on</div>"+
+  "<div id='task'>"+todoArr[id]+"</div>";
+}
 
-
-function taskCompleted() {
+function taskCompleted(id) {
   if ((document.getElementById("act-task").style.textDecoration = "none")) {
     document.getElementById("act-task").style.textDecoration = "line-through";
   } 
   else {
+    alert("Im here");
     document.getElementById("act-task").style.textDecoration = "none";
   }
 }

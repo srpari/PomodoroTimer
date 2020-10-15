@@ -120,11 +120,12 @@ header {
   justify-content: center;
 }
 
-.current-task .task {
+.current-task #task {
   font-size: 25px;
   opacity: 1;
   text-transform: lowercase;
   padding: 10px;
+  font-weight: 600;
 }
 
 .task-template {
@@ -145,14 +146,12 @@ header {
   padding: 10px 20px 10px 20px;
   color: #000;
 }
-
-.task-list {
-  /* display: flex; */
-  background-color: #fff;
-  width: 100%;
-  padding: 10px;
-  align-items: baseline;
-}
+/* 
+.task-list a {
+  text-decoration: none;
+  color: #000;
+  cursor: pointer;
+} */
 
 .task-list button {
   padding: 10px 20px 10px 20px;
@@ -168,13 +167,28 @@ header {
   flex: 2;
   text-align: left;
   padding-left: 10px;
+  padding-right: 10px;
   font-size: 25px;
   text-decoration: none;
+  overflow: hidden;
+  flex-flow: wrap;
+  overflow-wrap: break-word;
 }
 
 .listItems {
   display: flex;
+  background-color: #fff;
+  width: 100%;
+  align-items: baseline;
+  padding: 10px;
+  border-bottom-style: inset;
+  cursor: pointer;
 }
+
+.listItems:hover {
+  border-left: 5px groove #000;
+}
+
 /* 
 .task-list #est-task {
   flex: 2;
