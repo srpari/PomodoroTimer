@@ -4,7 +4,11 @@ let timer_minutes;
 let seconds_interval;
 let minutes_interval;
 
+// used to reset the minutes timer
 let pomo_minutes=25;
+
+//temp variables for each timer types
+let work_minutes=25,short_minutes=5,long_minutes=15;
 
 // Audio 
 let bell = new Audio("tea-bell.mp3");
@@ -19,13 +23,14 @@ function timer() {
        // timer_minutes = document.getElementById("timer-minutes").innerHTML-1;
        timer_minutes = document.getElementById("timer-minutes").innerHTML;
         
-  
+       //clearInterval(seconds_interval);
         seconds_interval = setInterval(secondsTimer, 1000);
       
         function secondsTimer() {
           
           if (timer_seconds>=0){
-            document.getElementById("timer-minutes").innerHTML=timer_minutes-1;  
+            //document.getElementById("timer-minutes").innerHTML=timer_minutes-1;  
+            document.getElementById("timer-minutes").innerHTML=('0' + (timer_minutes-1) ).slice(-2);
             document.getElementById("timer-seconds").innerHTML= ('0' + timer_seconds ).slice(-2);
             timer_seconds = timer_seconds-seconds_interval;
           }
@@ -52,32 +57,44 @@ function timer() {
       }   
 }
 
-// timer types "Pomo" "Short" "Long" funtions
+// Initialize timer types "Pomo" "Short" "Long" funtions
 function work() {  
-  pomo_minutes = 5;
+  pomo_minutes = work_minutes;
   document.body.style.background = "#f05b56";
   templateTimers();
 }
 function short() {
-  pomo_minutes = 3;
+  pomo_minutes = short_minutes;
   document.body.style.background = "#4ca6a9";
   templateTimers();
 }
 function long() {
-  pomo_minutes = 4;
+  pomo_minutes = long_minutes;
   document.body.style.background = "#498fc1";
   templateTimers();
 }
 
 // Timer Template funtion -- Initializes the mins,secs & Timer Button
 function templateTimers(){
-  document.getElementById("timer-minutes").innerHTML = pomo_minutes;
+ // document.getElementById("timer-minutes").innerHTML = pomo_minutes;
+  document.getElementById("timer-minutes").innerHTML=('0' + (pomo_minutes) ).slice(-2);           
   document.getElementById("timer-seconds").innerHTML = seconds;  
   document.getElementById("timerBtn").innerHTML="START";
   document.getElementById("timerBtn").value="START";   
   timer_seconds=10;
   clearInterval(seconds_interval);
+ 
+  //clearTimeout(seconds_interval);
 }
+
+// function to set customized time
+function saveSettings() {
+  work_minutes = document.getElementById("pt").value;
+  short_minutes = document.getElementById("st").value;
+  long_minutes = document.getElementById("lt").value;
+  closeSettings();
+}
+
 
 function taskCompleted() {
   if ((document.getElementById("act-task").style.textDecoration = "none")) {
@@ -105,11 +122,13 @@ function openSettings() {
 function closeSettings() {
   document.getElementById("settime").style.display = "none";
 }
-function saveSettings() {
-  work_minutes = document.getElementById("pt").value;
-  short_minutes = document.getElementById("st").value;
-  long_minutes = document.getElementById("lt").value;
-  document.getElementById("timer").innerHTML = work_minutes + ":" + seconds;
-  document.getElementById("timer").innerHTML = short_minutes + ":" + seconds;
-  document.getElementById("timer").innerHTML = long_minutes + ":" + seconds;
-}
+
+
+
+function onlyNumberKey(evt) {           
+  // Only ASCII charactar in that range allowed 
+  var ASCIICode = (evt.which) ? evt.which : evt.keyCode 
+  if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57)) 
+      return false; 
+  return true; 
+} 

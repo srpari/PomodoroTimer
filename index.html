@@ -93,9 +93,9 @@
         <label>Long Break</label>
       </div>
       <div class="time-inputs">
-        <input type="text" id="pt" class="set-time" value="25" />
-        <input type="text" id="st" class="set-time" value="5" />
-        <input type="text" id="lt" class="set-time" value="15" />
+        <input type="text" id="pt" onkeypress="return onlyNumberKey(event)" class="set-time" value="25" />
+        <input type="text" id="st" onkeypress="return onlyNumberKey(event)" class="set-time" value="5" />
+        <input type="text" id="lt" onkeypress="return onlyNumberKey(event)" class="set-time" value="15" />
       </div>
       <div class="time-ctrls">
         <button type="submit" class="btn" onclick="saveSettings()">Save</button>

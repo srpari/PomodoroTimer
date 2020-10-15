@@ -68,8 +68,9 @@ header {
 }
 
 #timer {
-  display: flex;
+  display: grid;
   font-size: 10rem;
+  grid-template-columns: 180px 1fr 180px;
   justify-content: space-between;
   font-weight: 500;
 }
