@@ -75,6 +75,19 @@
         Cancel
       </button>
     </div>
+    <!-- Task Edit Window -->
+    <div class="edit-task" id="edittask">
+      <input
+        type="text"        
+        class="edit-input"
+        value=""
+      />
+      <button type="submit" class="btn editsave" id="et" onclick="saveEdittask(this.id)">Save</button>
+      <button type="button" class="btn cancel" onclick="closeEdittask()">
+        Cancel
+      </button>
+    </div>
+
     <!-- New Timer window -->
     <div class="set-timer" id="settime">
       <div class="labels">

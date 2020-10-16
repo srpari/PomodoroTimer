@@ -146,12 +146,6 @@ header {
   padding: 10px 20px 10px 20px;
   color: #000;
 }
-/* 
-.task-list a {
-  text-decoration: none;
-  color: #000;
-  cursor: pointer;
-} */
 
 .task-list button {
   padding: 10px 20px 10px 20px;
@@ -189,14 +183,6 @@ header {
   border-left: 5px groove #000;
 }
 
-/* 
-.task-list #est-task {
-  flex: 2;
-  text-align: right;
-  padding-right: 10px;
-  font-size: 25px;
-  text-decoration: none;
-} */
 /*============= Add new Task ===============*/
 
 .add-task {
@@ -224,7 +210,8 @@ header {
 }
 
 /* The newTask window - hidden by default */
-.new-task {
+.new-task,
+.edit-task {
   display: none;
   position: absolute;
   bottom: 200px;
@@ -238,13 +225,16 @@ header {
   border: 1px solid #6e6d6d;
   border-radius: 10px;
 }
+
 .new-task button,
-.time-ctrls button {
+.time-ctrls button,
+.edit-task button {
   background-color: #6e6d6d;
   padding: 10px;
   margin-right: 20px;
 }
-.addNewTask {
+.addNewTask,
+.edit-input {
   display: flex;
   width: 90%;
   height: 40%;
@@ -254,6 +244,8 @@ header {
   background-color: #dfd2d1;
   opacity: 0.6;
 }
+
+/* Edit Task window */
 
 /* The setTimer window - hidden by default */
 .set-timer {

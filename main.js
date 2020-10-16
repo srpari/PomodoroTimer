@@ -103,19 +103,7 @@ function saveNewtask() {
   if(document.getElementById("at").value !="") {
     todoArr.push(document.getElementById("at").value);
     //console.log('todoArr :>> ', todoArr);
-    
- // document.getElementById("task-list").style.display=block;
-    document.querySelector(".task-list").innerHTML = "";
-    for (let i = 0; i < todoArr.length; i++) {
-      document.querySelector(".task-list").innerHTML +=
-     "<div class='listItems' id="+i+"'> <button class='btn' onclick='taskCompleted("+i+")'>"+
-        "  <i class='fa fa-check-circle' style='font-size: 28px; color: green' "+ 
-         " ></i> </button>" + 
-       "  <div id='act-task' onclick='updateTask("+i+")' >"+todoArr[i]+"</div> "+
-       "<button class='btn' onclick=alert('123')>"+
-       "<i class='fa fa-ellipsis-v' style='font-size: 26px; color: black'></i>"+ 
-     "</button></div>";
-    }
+    displayTodo();
   }
   else {
     alert ("Pleses add new task !");
@@ -123,25 +111,50 @@ function saveNewtask() {
   closeNewtask();  
 }
 
+function displayTodo() {
+ // document.getElementById("task-list").style.display=block;
+ document.querySelector(".task-list").innerHTML = "";
+ for (let i = 0; i < todoArr.length; i++) {
+   document.querySelector(".task-list").innerHTML +=
+  "<div class='listItems' id="+i+"'> <button class='btn' onclick='taskCompleted("+i+")'>"+
+     "  <i class='fa fa-check-circle' style='font-size: 28px; color: green' "+ 
+      " ></i> </button>" + 
+    "  <div id='act-task' onclick='updateTask("+i+")' >"+todoArr[i]+"</div> "+
+    "<button class='btn' onclick='taskEdit("+i+")'>"+
+    "<i class='fa fa-ellipsis-v' style='font-size: 26px; color: black'></i>"+ 
+  "</button></div>";
+ }
+}
+
+function saveEdittask(id){
+ todoArr[id]=document.querySelector(".edit-input").value;
+ displayTodo();
+ closeEdittask();
+}
+
 function updateTask(id) {
-  alert(todoArr[id]);
   document.querySelector(".current-task").innerHTML =
   "<div>working on</div>"+
   "<div id='task'>"+todoArr[id]+"</div>";
 }
 
+function taskEdit(id) {
+  document.getElementById("edittask").style.display = "block";
+  document.querySelector(".edit-input").value=todoArr[id];
+  document.querySelector(".editsave").setAttribute("id",id);
+}
+
 function taskCompleted(id) {
-  if ((document.getElementById("act-task").style.textDecoration = "none")) {
-    document.getElementById("act-task").style.textDecoration = "line-through";
-  } 
-  else {
-    alert("Im here");
-    document.getElementById("act-task").style.textDecoration = "none";
-  }
+   
 }
 
 function openNewtask() {
   document.getElementById("newtask").style.display = "block";
+}
+
+function closeEdittask () {
+  document.querySelector(".edit-input").value = "";
+  document.getElementById("edittask").style.display = "none";
 }
 
 function closeNewtask() {
