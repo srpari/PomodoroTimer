@@ -154,7 +154,26 @@ function taskEdit(id) {
 }
 
 function taskCompleted(id) {
-   
+  if (todoArr[id].includes("<strike>")) {
+    todoArr[id] = todoArr[id].replace("<strike>", "");
+    todoArr[id] = todoArr[id].replace("</strike>", "");
+  } else {
+    todoArr[id] = todoArr[id].strike();
+  }
+//  console.log("todoArr===>"+todoArr);
+  displayTodo();
+}
+
+function delCompletedTasks() {
+  for (let i = 0; i < todoArr.length; i++) {
+    if (todoArr[i].includes("<strike>")) {
+      todoArr.splice(i, 1);
+      console.log("deleted===>"+todoArr[i]);  
+    }
+  } 
+//  console.log("todoArr===>"+todoArr);  
+  displayTodo();
+  document.getElementById("tm").style.display="none";
 }
 
 function openNewtask() {
@@ -178,7 +197,9 @@ function closeSettings() {
   document.getElementById("settime").style.display = "none";
 }
 
-
+function openTaskMenu(){
+  document.getElementById("tm").style.display="block";
+}
 
 function onlyNumberKey(evt) {           
   // Only ASCII charactar in that range allowed 

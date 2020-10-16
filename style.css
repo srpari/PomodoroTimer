@@ -288,6 +288,31 @@ header {
   font-size: 20px;
 }
 
+.task-menu {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  font-size: 18px;
+  bottom: 300px;
+  right: 390px;
+  border-radius: 10px;
+  width: 180px;
+  text-align: left;
+  justify-content: center;
+  margin: 10px;
+  z-index: 9;
+}
+
+.task-menu > li {
+  list-style: none;
+  padding: 10px;
+  border-radius: 10px;
+}
+.task-menu > li:hover {
+  background-color: #dfd2d1;
+  cursor: pointer;
+}
+
 /*======== Footer --- Task desc ===========*/
 /* .task-desc {
   width: 35%;
