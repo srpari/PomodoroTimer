@@ -132,6 +132,14 @@ function saveEdittask(id){
  closeEdittask();
 }
 
+function deleteEdittask(id) {
+  var remove=todoArr.splice(id, 1);
+  displayTodo();
+  closeEdittask();
+  console.log("removed==="+remove);
+  console.log(todoArr);
+}
+
 function updateTask(id) {
   document.querySelector(".current-task").innerHTML =
   "<div>working on</div>"+
@@ -142,6 +150,7 @@ function taskEdit(id) {
   document.getElementById("edittask").style.display = "block";
   document.querySelector(".edit-input").value=todoArr[id];
   document.querySelector(".editsave").setAttribute("id",id);
+  document.querySelector(".editdelete").setAttribute("id",id);
 }
 
 function taskCompleted(id) {
