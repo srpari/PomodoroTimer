@@ -136,8 +136,8 @@ function deleteEdittask(id) {
   var remove=todoArr.splice(id, 1);
   displayTodo();
   closeEdittask();
-  console.log("removed==="+remove);
-  console.log(todoArr);
+  // console.log("removed==="+remove);
+  // console.log(todoArr);
 }
 
 function updateTask(id) {
@@ -165,13 +165,17 @@ function taskCompleted(id) {
 }
 
 function delCompletedTasks() {
+  let delArr =[];
+  let delIndex=0;
   for (let i = 0; i < todoArr.length; i++) {
     if (todoArr[i].includes("<strike>")) {
-      todoArr.splice(i, 1);
-      console.log("deleted===>"+todoArr[i]);  
+      delArr[delIndex]=todoArr[i];
+      delIndex++;
     }
   } 
-//  console.log("todoArr===>"+todoArr);  
+  todoArr = todoArr.filter(item => !delArr.includes(item));
+  // console.log("deleted===>"+delArr);  
+  // console.log("todoArr===>"+todoArr);  
   displayTodo();
   document.getElementById("tm").style.display="none";
 }
