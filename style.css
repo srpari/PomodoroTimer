@@ -196,6 +196,7 @@ header {
   opacity: 0.8;
   margin-top: 12px;
   border: 2px dashed #ffffff66;
+  margin-bottom: 100px;
 }
 
 .add-task span {
@@ -209,15 +210,19 @@ header {
   opacity: 1;
 }
 
+/* [hidden] {
+  display: none !important;
+} */
+
 /* The newTask window - hidden by default */
 .new-task,
 .edit-task {
   display: none;
   position: absolute;
-  bottom: 200px;
+  bottom: 340px;
   left: 625px;
   background-color: #fff;
-  z-index: 9;
+  z-index: 0;
   color: #000;
   width: 670px;
   height: 200px;
