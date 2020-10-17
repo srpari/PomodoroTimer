@@ -15,6 +15,7 @@ let bell = new Audio("tea-bell.mp3");
 
 //todoList
 let todoArr = [];
+let saveTemp = [];
 
 function timer() { 
   let Label=document.getElementById("timerBtn").value; 
@@ -95,6 +96,9 @@ function saveSettings() {
   short_minutes = document.getElementById("st").value;
   long_minutes = document.getElementById("lt").value;
   closeSettings();
+  long();
+  short();
+  work();
 }
 
 
@@ -148,10 +152,12 @@ function updateTask(id) {
 
 function taskEdit(id) {
   document.getElementById("edittask").style.display = "block";
-  document.querySelector(".edit-input").value=todoArr[id];
+  let removeStrike = todoArr[id];
+  document.querySelector(".edit-input").value=removeTags(removeStrike);
   document.querySelector(".editsave").setAttribute("id",id);
   document.querySelector(".editdelete").setAttribute("id",id);
 }
+
 
 function taskCompleted(id) {
   if (todoArr[id].includes("<strike>")) {
@@ -176,6 +182,24 @@ function delCompletedTasks() {
   todoArr = todoArr.filter(item => !delArr.includes(item));
   // console.log("deleted===>"+delArr);  
   // console.log("todoArr===>"+todoArr);  
+  displayTodo();
+  document.getElementById("tm").style.display="none";
+}
+
+function saveTemplate() {
+  let temparr = [];
+  temparr = todoArr;
+  for (let i = 0; i < temparr.length; i++) {
+      saveTemp[i]=removeTags(temparr[i]);
+  }
+  console.log("saveTemp===>"+saveTemp); 
+  console.log("todoArr===>"+todoArr);
+  document.getElementById("tm").style.display="none";
+}
+
+function addTemplate () {
+  todoArr = todoArr.concat(saveTemp);
+  console.log("addTemplate===>"+todoArr);
   displayTodo();
   document.getElementById("tm").style.display="none";
 }
@@ -205,10 +229,22 @@ function openTaskMenu(){
   document.getElementById("tm").style.display="block";
 }
 
+
 function onlyNumberKey(evt) {           
   // Only ASCII charactar in that range allowed 
   var ASCIICode = (evt.which) ? evt.which : evt.keyCode 
   if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57)) 
       return false; 
   return true; 
+} 
+
+function removeTags(str) { 
+  if ((str===null) || (str==='')) 
+      return false; 
+  else
+      str = str.toString();         
+  // Regular expression to identify HTML tags in  
+  // the input string. Replacing the identified  
+  // HTML tag with a null string. 
+  return str.replace( /(<([^>]+)>)/ig, ''); 
 } 
