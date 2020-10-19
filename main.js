@@ -17,6 +17,15 @@ let bell = new Audio("tea-bell.mp3");
 let todoArr = [];
 let saveTemp = [];
 
+
+// Windows onLoad / refresh()
+window.onload = function () {
+  if (JSON.parse(localStorage.getItem("todoArr")) != null)
+  todoArr = JSON.parse(localStorage.getItem("todoArr"));
+  //console.log(todoArr);
+  displayTodo();
+};
+
 function timer() { 
   let Label=document.getElementById("timerBtn").value; 
   
@@ -27,38 +36,40 @@ function timer() {
        timer_minutes = document.getElementById("timer-minutes").innerHTML;
         
        //clearInterval(seconds_interval);
-        seconds_interval = setInterval(secondsTimer, 1000);
-      
-        function secondsTimer() {
-          
-          if (timer_seconds>=0){
-            //document.getElementById("timer-minutes").innerHTML=timer_minutes-1;  
-            document.getElementById("timer-minutes").innerHTML=('0' + (timer_minutes-1) ).slice(-2);
-            document.getElementById("timer-seconds").innerHTML= ('0' + timer_seconds ).slice(-2);
-            timer_seconds = timer_seconds-seconds_interval;
-          }
-          else
-          {
-            timer_seconds = 09;
-            timer_minutes--;
-            if(timer_minutes==0) 
-            { 
-             bell.play();
-             clearInterval(seconds_interval);
-              // PLay the bell sound to tell the end of session
-            // alert("Task Completed");
-            }
-          }         
-        } //seconds timer ends here
+        seconds_interval = setInterval(secondsTimer, 1000); // calls timer countdown
+        
       }  
       else if (Label=="RESET") {
         document.getElementById("timerBtn").innerHTML="START";
-        document.getElementById("timerBtn").value="START";      
-        document.getElementById("timer-minutes").innerHTML = pomo_minutes;
-        document.getElementById("timer-seconds").innerHTML = seconds;    
+        document.getElementById("timerBtn").value="START";        
+        document.getElementById("timer-minutes").innerHTML=('0' + (pomo_minutes) ).slice(-2);           
+        document.getElementById("timer-seconds").innerHTML =('0' + (seconds) ).slice(-2);    
         clearInterval(seconds_interval); 
       }   
 }
+
+// Timer Countdown function 
+function secondsTimer() {          
+  if (timer_seconds>=0){
+    //document.getElementById("timer-minutes").innerHTML=timer_minutes-1;  
+    document.getElementById("timer-minutes").innerHTML=('0' + (timer_minutes-1) ).slice(-2);
+    document.getElementById("timer-seconds").innerHTML= ('0' + timer_seconds ).slice(-2);
+    timer_seconds = timer_seconds-seconds_interval;
+  }
+  else
+  {
+    timer_seconds = 09;
+    timer_minutes--;
+    if(timer_minutes==0) 
+    { 
+     bell.play();
+     clearInterval(seconds_interval);
+      // PLay the bell sound to tell the end of session
+    // alert("Task Completed");
+    }
+  }         
+} //seconds timer ends here
+
 
 // Initialize timer types "Pomo" "Short" "Long" funtions
 function work() {  
@@ -81,7 +92,7 @@ function long() {
 function templateTimers(){
  // document.getElementById("timer-minutes").innerHTML = pomo_minutes;
   document.getElementById("timer-minutes").innerHTML=('0' + (pomo_minutes) ).slice(-2);           
-  document.getElementById("timer-seconds").innerHTML = seconds;  
+  document.getElementById("timer-seconds").innerHTML =('0' + (seconds) ).slice(-2);   
   document.getElementById("timerBtn").innerHTML="START";
   document.getElementById("timerBtn").value="START";   
   timer_seconds=10;
@@ -101,12 +112,16 @@ function saveSettings() {
   work();
 }
 
-
 // addNewTask to the List 
 function saveNewtask() {
   if(document.getElementById("at").value !="") {
     todoArr.push(document.getElementById("at").value);
     //console.log('todoArr :>> ', todoArr);
+    if (localStorage.getItem("todoArr") == null) {
+      localStorage.setItem("todoArr", JSON.stringify(todoArr));
+    } else {
+      localStorage.setItem("todoArr", JSON.stringify(todoArr));
+    }
     displayTodo();
   }
   else {
@@ -138,6 +153,11 @@ function saveEdittask(id){
 
 function deleteEdittask(id) {
   var remove=todoArr.splice(id, 1);
+  if (localStorage.getItem("todoArr") == null) {
+    localStorage.setItem("todoArr", JSON.stringify(todoArr));
+  } else {
+    localStorage.setItem("todoArr", JSON.stringify(todoArr));
+  }
   displayTodo();
   closeEdittask();
   // console.log("removed==="+remove);
@@ -147,7 +167,7 @@ function deleteEdittask(id) {
 function updateTask(id) {
   document.querySelector(".current-task").innerHTML =
   "<div>working on</div>"+
-  "<div id='task'>"+todoArr[id]+"</div>";
+  "<div id='task'>"+todoArr[id]+"</div>";  
 }
 
 function taskEdit(id) {
@@ -167,6 +187,11 @@ function taskCompleted(id) {
     todoArr[id] = todoArr[id].strike();
   }
 //  console.log("todoArr===>"+todoArr);
+if (localStorage.getItem("todoArr") == null) {
+  localStorage.setItem("todoArr", JSON.stringify(todoArr));
+} else {
+  localStorage.setItem("todoArr", JSON.stringify(todoArr));
+}
   displayTodo();
 }
 
@@ -182,6 +207,11 @@ function delCompletedTasks() {
   todoArr = todoArr.filter(item => !delArr.includes(item));
   // console.log("deleted===>"+delArr);  
   // console.log("todoArr===>"+todoArr);  
+  if (localStorage.getItem("todoArr") == null) {
+    localStorage.setItem("todoArr", JSON.stringify(todoArr));
+  } else {
+    localStorage.setItem("todoArr", JSON.stringify(todoArr));
+  }
   displayTodo();
   document.getElementById("tm").style.display="none";
 }
@@ -192,14 +222,14 @@ function saveTemplate() {
   for (let i = 0; i < temparr.length; i++) {
       saveTemp[i]=removeTags(temparr[i]);
   }
-  console.log("saveTemp===>"+saveTemp); 
-  console.log("todoArr===>"+todoArr);
+  //console.log("saveTemp===>"+saveTemp); 
+  //console.log("todoArr===>"+todoArr);
   document.getElementById("tm").style.display="none";
 }
 
 function addTemplate () {
   todoArr = todoArr.concat(saveTemp);
-  console.log("addTemplate===>"+todoArr);
+ // console.log("addTemplate===>"+todoArr);
   displayTodo();
   document.getElementById("tm").style.display="none";
 }
@@ -228,7 +258,6 @@ function closeSettings() {
 function openTaskMenu(){
   document.getElementById("tm").style.display="block";
 }
-
 
 function onlyNumberKey(evt) {           
   // Only ASCII charactar in that range allowed 

@@ -14,17 +14,11 @@
   <body>
     <header>
       <span>Pomodoro Timer</span>
-      <!-- <button class="btn reports">
-        <i class="fa fa-bar-chart"></i>&nbsp;<span>Reports</span>
-      </button> -->
       <button class="btn settings">
         <i class="fa fa-cog"></i>&nbsp;<span onclick="openSettings()"
           >Settings</span
         >
       </button>
-      <!-- <button class="btn login">
-        <i class="fa fa-user-circle-o"></i>&nbsp;<span>Login</span>
-      </button> -->
     </header>
     <div class="progress">
       <div></div>
@@ -36,9 +30,11 @@
         <button class="btn" onclick="long()">Long Break</button>
       </div>
       <div id="timer">
+        <div></div>
         <div id="timer-minutes">25</div>
         <div>:</div>
         <div id="timer-seconds">00</div>
+        <div></div>
       </div>
       <div><button class="btn start" id="timerBtn" value="START" onclick="timer()">START</button></div>
     </main>
@@ -115,8 +111,7 @@
         </button>
       </div>
     </div>
-
-    <!-- <footer class="task-desc">
+   <!-- <footer class="task-desc">
       <div>Est:<span>4</span></div>
       <div>Act:<span>4</span></div>
       <div>Finish at <span>8:35</span></div>

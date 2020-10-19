@@ -70,9 +70,10 @@ header {
 #timer {
   display: grid;
   font-size: 10rem;
-  grid-template-columns: 180px 1fr 180px;
-  justify-content: space-between;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   font-weight: 500;
+  place-items: center;
+  text-align: center;
 }
 
 .btn {
